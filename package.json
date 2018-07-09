@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "config:use:local": "cp -rf configs/config-local.json src/config.json && npm run config:show",
+    "config:show": "cat src/config.json"
   },
   "private": true,
   "dependencies": {
