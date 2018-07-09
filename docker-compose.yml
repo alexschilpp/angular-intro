@@ -1,0 +1,6 @@
+version: '3'
+services:
+  angular-intro-fe-local:
+      image: angular-intro:latest
+      ports:
+        - "8085:80"
