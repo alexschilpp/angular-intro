@@ -9,15 +9,18 @@ import {ConfigService} from '../shared/config.service';
 })
 export class InvestmentCategoriesService {
 
+  private investmentServiceClient: any;
+
   constructor(
     private httpClient: HttpClient,
     private configService: ConfigService
-  ) { }
+  ) {
+    this.investmentServiceClient = this.configService.config ? this.configService.config.investmentServiceClient : null;
+  }
 
   loadInvestmentCategories(): Observable<any[]> {
-    console.log(this.configService.config);
     return this.httpClient
-      .get('https://investment-service-rest-api-dev.k8.akelius.com/api/invest-categories')
+      .get(`${this.investmentServiceClient.apiUrl}/invest-categories`)
       .pipe(
         map((res: any) => {
           return res.categories ? res.categories : [];
